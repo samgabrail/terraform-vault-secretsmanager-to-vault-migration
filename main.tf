@@ -2,10 +2,6 @@ provider "aws" {
   region = var.aws_region
 }
 
-provider "vault" {
-  # Configuration options
-}
-
 data "aws_secretsmanager_secret" "mysecret" {
   for_each = toset(var.secret_names)
   name     = each.value
