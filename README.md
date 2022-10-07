@@ -8,6 +8,10 @@ The secrets migrated will appear in Terraform's state file. Protect this state f
 
 ## To Use this Module:
 
+You can find an [example in this repo.](https://github.com/samgabrail/aws-secrets-manager-migration-to-vault)
+
+or simply do the following:
+
 create a `main.tf` file with this content:
 ```bash
 terraform {
@@ -26,7 +30,7 @@ terraform {
 
 module "secretsmanager-to-vault-migration" {
   source  = "samgabrail/secretsmanager-to-vault-migration/vault"
-  version = "0.0.1" # use the latest version or pin a version
+  version = "0.0.4" # use the latest version or pin a version
   # insert at least the 1 required variable here
   secret_names     = ["samg-migration-vault", "samg-migration-vault2"]
 }
@@ -46,15 +50,3 @@ output "secrets_in_vault" {
 ```
 
 and an optional `variables.tf` file.
-
-## Test locally
-
-#!/usr/bin/bash
-export VAULT_ADDR=https://
-export VAULT_TOKEN=
-export VAULT_CACERT="ca.pem"
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export AWS_SESSION_TOKEN=
-
-terraform apply --auto-approve
