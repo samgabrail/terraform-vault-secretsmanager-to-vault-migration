@@ -11,7 +11,13 @@ variable "secret_names" {
 }
 
 variable "vault_kv_path" {
-  description = "The path in the KV secrets engine, don't append a forward slash / "
+  description = "The path in the KV secrets engine, don't append a forward slash '/'. Make sure this path exists ahead of time"
   type        = string
-  default     = "kv"
+  default     = "secret"
+}
+
+variable "vault_namespace" {
+  description = "The Vault namespace to send the secrets to. This only applies to Vault Enterprise. Default below is for HCP Vault for the admin namespace. This value gets ignored if working with an OSS Vault cluster"
+  type = string
+  default = "admin"
 }
